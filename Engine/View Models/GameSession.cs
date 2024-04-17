@@ -98,18 +98,18 @@ namespace Engine.ViewModels
         #endregion
         public GameSession()
         {
-            CurrentPlayer = new Player("Scott", "Fighter", 0, 10, 10, 1000000);
+            CurrentPlayer = new Player("Karell", "Assassin", 0, 40, 200, 1000);
             if (!CurrentPlayer.Weapons.Any())
             {
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
             }
             CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(2001));
             CurrentPlayer.LearnRecipe(RecipeFactory.RecipeByID(1));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3001));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3002));
-            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(3003));
+            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(9005));
+            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(9007));
+            CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(9001));
             CurrentWorld = WorldFactory.CreateWorld();
-            CurrentLocation = CurrentWorld.LocationAt(0, 0);
+            CurrentLocation = CurrentWorld.LocationAt(4, -2);
         }
         public void MoveNorth()
         {
@@ -199,6 +199,7 @@ namespace Engine.ViewModels
         {
             CurrentMonster = CurrentLocation.GetMonster();
         }
+
         public void AttackCurrentMonster()
         {
             if (CurrentPlayer.CurrentWeapon == null)
@@ -209,7 +210,6 @@ namespace Engine.ViewModels
             CurrentPlayer.UseCurrentWeaponOn(CurrentMonster);
             if (CurrentMonster.IsDead)
             {
-                // Get another monster to fight
                 GetMonsterAtLocation();
             }
             else

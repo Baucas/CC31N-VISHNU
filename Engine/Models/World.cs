@@ -104,7 +104,7 @@ namespace Engine.Models
                 CurrentPlayer.AddItemToInventory(ItemFactory.CreateGameItem(1001));
             }
             CurrentWorld = WorldFactory.CreateWorld();
-            CurrentLocation = CurrentWorld.LocationAt(0, 0);
+            CurrentLocation = CurrentWorld.LocationAt(2, -1);
         }
         public void MoveNorth()
         {

@@ -14,7 +14,7 @@ namespace Engine.Factories
         {
             Recipe energyPotion = new Recipe(1, "Energy Potion");
             energyPotion.AddIngredient(9001, 1);
-            energyPotion.AddIngredient(3007, 1);
+            energyPotion.AddIngredient(9007, 1);
             energyPotion.AddOutputItem(9005, 1);
             _recipes.Add(energyPotion);
         }

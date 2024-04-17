@@ -70,12 +70,14 @@
                 <RichTextBox x:Name="GameMessages"
                              Background="Beige"
                              VerticalScrollBarVisibility="Auto" TextChanged="GameMessages_TextChanged">
+                    
                     <RichTextBox.Resources>
                         <Style TargetType="{x:Type Paragraph}">
                             <Setter Property="Margin" Value="0"/>
                         </Style>
                     </RichTextBox.Resources>
                 </RichTextBox>
+
             </Border>
             <!-- Location information -->
             <Border Grid.Row="0" Grid.Column="1"
@@ -214,12 +216,17 @@
                     <ColumnDefinition Width="10"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
- 
-                <ComboBox Grid.Row="2" Grid.Column="0"
+
+                <ComboBox Grid.Row="0" Grid.Column="0"
                           Visibility="{Binding CurrentPlayer.HasConsumable, Converter={StaticResource BooleanToVisibility}}"
                           ItemsSource="{Binding CurrentPlayer.Consumables}"
                           SelectedItem="{Binding CurrentPlayer.CurrentConsumable}"
                           DisplayMemberPath="Name" Margin="0,25,0,-28"/>
+                <Button Grid.Row="1" Grid.Column="2"
+                          Visibility="{Binding CurrentPlayer.HasConsumable, Converter={StaticResource BooleanToVisibility}}"
+                          Content="Use"
+                          Click="OnClick_UseCurrentConsumable"/>
+
                 <ComboBox Grid.Row="0" Grid.Column="0"
                           Visibility="{Binding HasMonster, Converter={StaticResource BooleanToVisibility}}"
                           ItemsSource="{Binding CurrentPlayer.Weapons}"
@@ -258,12 +265,12 @@
                         Height="25" Width="65" Margin="10" 
                         Click="OnClick_DisplayTradeScreen"
                         Visibility="{Binding HasTrader, Converter={StaticResource BooleanToVisibility}}"
-        Content="Trade"  FontWeight="UltraBold" Foreground="DarkBlue" FontFamily="Elephant" Background="Gray" BorderBrush="DarkBlue" BorderThickness="3"/>
+                        Content="Trade"  FontWeight="UltraBold" Foreground="DarkBlue" FontFamily="Elephant" Background="Gray" BorderBrush="DarkBlue" BorderThickness="3"/>
                 <Button Grid.Row="1" Grid.Column="2" 
                         Height="25" Width="65" Margin="10" 
                         Click="OnClick_MoveEast"
                         Visibility="{Binding HasLocationToEast, Converter={StaticResource BooleanToVisibility}}"
-        Content="East"  FontWeight="UltraBold" Foreground="DarkBlue" FontFamily="Elephant" Background="Gray" BorderBrush="DarkBlue" BorderThickness="3"/>
+                        Content="East"  FontWeight="UltraBold" Foreground="DarkBlue" FontFamily="Elephant" Background="Gray" BorderBrush="DarkBlue" BorderThickness="3"/>
                 <Button Grid.Row="2" Grid.Column="1" 
                         Height="25" Width="65" Margin="10" 
                         Click="OnClick_MoveSouth"
